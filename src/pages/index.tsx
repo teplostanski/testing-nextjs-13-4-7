@@ -1,39 +1,44 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from 'next/head';
+import Image from 'next/image';
+import { Inter } from 'next/font/google';
+import styles from '@/styles/Home.module.css';
+import { useState, useEffect } from 'react';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002' || 'http://localhost:3001' || 'http://localhost:3000'
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  'http://localhost:3002' ||
+  'http://localhost:3001' ||
+  'http://localhost:3000';
 
-export async function getStaticProps() {
-  try {
-    const res = await fetch(`${API_URL}/api/hello`);
-    console.log("Response status:", res.status); // Логируем статус ответа
-    if (!res.ok) {
-      throw new Error(`Failed to fetch hello, status: ${res.status}`);
-    }
-    
-    const arr = await res.json();
-    const hello = [arr]
-    console.log("hello data:", hello); // Логируем полученные данные
-    return {
-      props: {
-        hello,
-      },
+type Data = {
+  name: string;
+};
+
+export default function Home({ hello }: any) {
+  const [hello1, setHello] = useState<Data[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/hello`);
+        console.log('Response status:', res.status);
+        if (!res.ok) {
+          throw new Error(`Failed to fetch hello, status: ${res.status}`);
+        }
+
+        const arr: { name: string } = await res.json();
+        setHello([arr]);
+        console.log('hello data:', arr);
+      } catch (error) {
+        console.error('Error in fetchData:', error);
+      }
     };
-  } catch (error) {
-    console.error("Error in getStaticProps:", error);
-    return {
-      props: {
-        hello: [],
-      },
-    };
-  }
-}
 
-export default function Home({hello}: any) {
+    fetchData();
+  }, []);
+
   return (
     <>
       <Head>
@@ -56,7 +61,7 @@ export default function Home({hello}: any) {
             >
               By{' '}
               <Image
-                src="/vercel.svg"
+                src="./vercel.svg"
                 alt="Vercel Logo"
                 className={styles.vercelLogo}
                 width={100}
@@ -64,14 +69,17 @@ export default function Home({hello}: any) {
                 priority
               />
             </a>
-            
           </div>
         </div>
 
         <div className={styles.center}>
-          {hello && hello.map(({name}: {name: string}) => (
-            <p key={1}>{name}</p>
-          ))}
+          {hello &&
+            hello.map(({ name }: { name: string }) => <p key={1}>{name}</p>)}
+        </div>
+        
+        <div className={styles.center}>
+          {hello1 &&
+            hello1.map(({ name }: { name: string }) => <p key={1}>{name}</p>)}
         </div>
 
         <div className={styles.grid}>
@@ -134,5 +142,31 @@ export default function Home({hello}: any) {
         </div>
       </main>
     </>
-  )
+  );
+}
+
+export async function getStaticProps() {
+  try {
+    const res = await fetch(`${API_URL}/api/hello`);
+    console.log('Response status:', res.status); // Логируем статус ответа
+    if (!res.ok) {
+      throw new Error(`Failed to fetch hello, status: ${res.status}`);
+    }
+
+    const arr = await res.json();
+    const hello = [arr];
+    console.log('hello data:', hello); // Логируем полученные данные
+    return {
+      props: {
+        hello,
+      },
+    };
+  } catch (error) {
+    console.error('Error in getStaticProps:', error);
+    return {
+      props: {
+        hello: [],
+      },
+    };
+  }
 }
