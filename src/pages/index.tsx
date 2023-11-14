@@ -20,7 +20,7 @@ export default function Home({ hello }: any) {
   const [hello1, setHello] = useState<Data[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataa = async () => {
       try {
         const res = await fetch(`${API_URL}/api/hello`);
         console.log('Response status:', res.status);
@@ -32,11 +32,11 @@ export default function Home({ hello }: any) {
         setHello([arr]);
         console.log('hello data:', arr);
       } catch (error) {
-        console.error('Error in fetchData:', error);
+        console.error('Error in fetchDataa:', error);
       }
     };
 
-    fetchData();
+    fetchDataa();
   }, []);
 
   return (
@@ -77,9 +77,9 @@ export default function Home({ hello }: any) {
             hello.map(({ name }: { name: string }) => <p key={1}>{name}</p>)}
         </div>
         
-        <div className={styles.center}>
+        <div>
           {hello1 &&
-            hello1.map(({ name }: { name: string }) => <p key={1}>{name}</p>)}
+            hello1.map(({ name }: { name: string }) => <p key={10}>{name}</p>)}
         </div>
 
         <div className={styles.grid}>
