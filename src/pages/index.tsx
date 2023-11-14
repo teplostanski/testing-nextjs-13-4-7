@@ -5,9 +5,11 @@ import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002' || 'http://localhost:3001' || 'http://localhost:3000'
+
 export async function getStaticProps() {
   try {
-    const res = await fetch('http://localhost:3002/api/hello');
+    const res = await fetch(`${API_URL}/api/hello`);
     console.log("Response status:", res.status); // Логируем статус ответа
     if (!res.ok) {
       throw new Error(`Failed to fetch hello, status: ${res.status}`);
