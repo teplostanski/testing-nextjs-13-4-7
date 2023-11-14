@@ -78,6 +78,9 @@
   align-items: center;
   position: relative;
   padding: 4rem 0;
+  background: tomato;
+  width: 100px;
+  height: 100px;
 }
 
 .center::before {
