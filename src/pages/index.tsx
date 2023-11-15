@@ -6,11 +6,11 @@ import { useState, useEffect } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  'http://localhost:3002' ||
-  'http://localhost:3001' ||
-  'http://localhost:3000';
+//const API_URL =
+//  process.env.NEXT_PUBLIC_API_URL ||
+//  'http://localhost:3002' ||
+//  'http://localhost:3001' ||
+//  'http://localhost:3000';
 
 type Data = {
   name: string;
@@ -22,7 +22,7 @@ export default function Home({ hello }: any) {
   useEffect(() => {
     const fetchDataa = async () => {
       try {
-        const res = await fetch(`${API_URL}/api/hello`);
+        const res = await fetch(`https://gist.githubusercontent.com/teplostanski/bd1aa9eb89abdd813a3b4ca7fd2c4d87/raw/2b42cb7f4dcfd76d993afe7f34a7eacffcd4b409/data.json`);
         console.log('Response status:', res.status);
         if (!res.ok) {
           throw new Error(`Failed to fetch hello, status: ${res.status}`);
@@ -147,7 +147,7 @@ export default function Home({ hello }: any) {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(`${API_URL}/api/hello`);
+    const res = await fetch(`https://gist.githubusercontent.com/teplostanski/bd1aa9eb89abdd813a3b4ca7fd2c4d87/raw/2b42cb7f4dcfd76d993afe7f34a7eacffcd4b409/data.json`);
     console.log('Response status:', res.status); // Логируем статус ответа
     if (!res.ok) {
       throw new Error(`Failed to fetch hello, status: ${res.status}`);
