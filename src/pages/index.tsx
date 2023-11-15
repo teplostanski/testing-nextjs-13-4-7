@@ -156,10 +156,12 @@ export async function getStaticProps() {
     const arr = await res.json();
     const hello = [arr];
     console.log('hello data:', hello); // Логируем полученные данные
+    
     return {
       props: {
         hello,
       },
+      revalidate: 60, // Re-generate the page every 60 seconds
     };
   } catch (error) {
     console.error('Error in getStaticProps:', error);
