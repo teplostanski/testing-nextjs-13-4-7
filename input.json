@@ -1,0 +1,59 @@
+{
+  "projects": [
+    {
+      "name": "Путешествие по России",
+      "stack": ["HTML", "CSS", "BEM", "Adaptive"],
+      "partake": "Соло",
+      "desc": "Адаптивная веб-страница Путешествия по России, описывающая необыкновенные места России.",
+      "preview": "https://raw.githubusercontent.com/teplostanski/travel/master/screen.png",
+      "links": {
+        "website": "https://teplostanski.github.io/travel/",
+        "source": "https://github.com/teplostanski/travel"
+      }
+    },
+    {
+      "name": "Научиться учиться",
+      "stack": ["HTML", "CSS", "BEM"],
+      "partake": "Соло",
+      "desc": "Это одноcтраничный сайт о современных и эффективных подходов к обучению.",
+      "preview": "https://raw.githubusercontent.com/teplostanski/how-to-learn/main/screen.png",
+      "links": {
+        "website": "https://teplostanski.github.io/travel/",
+        "source": "https://github.com/teplostanski/travel"
+      }
+    },
+    {
+      "name": "Movies Explorer",
+      "stack": ["HTML", "CSS", "BEM", "Adaptive", "React"],
+      "partake": "Соло",
+      "desc": "Данное вeб-приложение является сайтом-портфолио и мини-кинопоиском, открывающимся после регистрации.",
+      "preview": "https://raw.githubusercontent.com/teplostanski/movies-explorer-frontend/main/screen.png",
+      "links": {
+        "website": "https://teplostanski.github.io/travel/",
+        "source": "https://github.com/teplostanski/travel"
+      }
+    },
+    {
+      "name": "Место",
+      "stack": ["HTML", "CSS", "BEM", "Adaptive", "React"],
+      "partake": "Соло",
+      "desc": "\"Mesto\" — это сайт, где люди обмениваются фотографиями. Местом может быть что угодно: город, область или какое-то заведение.",
+      "preview": "https://raw.githubusercontent.com/teplostanski/react-mesto-auth/main/screen.png",
+      "links": {
+        "website": "https://teplostanski.github.io/travel/",
+        "source": "https://github.com/teplostanski/travel"
+      }
+    },
+    {
+      "name": "Шифровальная машина",
+      "stack": ["React", "MobX", "SCSS"],
+      "partake": "Совместный",
+      "desc": "Шифровальная машина - это онлайн сервис шифрования текстовых сообщений. Разработан выпускниками Яндекс.Практикума",
+      "preview": "https://github.com/encryption-machine/Front/raw/master/src/assets/images/screenshot.png",
+      "links": {
+        "website": "https://teplostanski.github.io/travel/",
+        "source": "https://github.com/teplostanski/travel"
+      }
+    }
+  ]
+}
