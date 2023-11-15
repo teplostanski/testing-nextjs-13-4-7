@@ -74,12 +74,12 @@ export default function Home({ hello }: any) {
 
         <div className={styles.center}>
           {hello &&
-            hello.map(({ name }: { name: string }) => <p key={1}>{name}</p>)}
+            hello.map(({ name }: { name: string }) => <p key={1}>{name} static props</p>)}
         </div>
         
         <div>
           {hello1 &&
-            hello1.map(({ name }: { name: string }) => <p key={10}>{name}</p>)}
+            hello1.map(({ name }: { name: string }) => <p key={10}>{name} use effect</p>)}
         </div>
 
         <div className={styles.grid}>
