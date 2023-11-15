@@ -1,40 +1,14 @@
 const fs = require('fs');
 
 function generateMarkdown(jsonData) {
-  let markdownContent =
-    '|                                                                                                                                                    |                                                                                                                                                    |\n';
-  markdownContent +=
-    '| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |\n';
+    let markdownContent = "|                       Проекты                                                                                                                             |\n";
+    markdownContent += "| -------------------------------------------------------------------------------------------------------------------------------------------------- |\n";
 
-  // Calculate the midpoint for splitting into two columns
-  const midpoint = Math.ceil(jsonData.projects.length / 2);
-
-  for (let i = 0; i < midpoint; i++) {
-    const project1 = jsonData.projects[i];
-    const project2 = jsonData.projects[i + midpoint];
-
-    markdownContent += `| **${project1.name}** <br> ${project1.stack.join(
-      ', '
-    )} <br> ![Preview](${project1.preview}) <br> ${
-      project1.desc
-    } <br> [Website](${project1.links.website}) <br> [Source](${
-      project1.links.source
-    }) |`;
-
-    if (project2) {
-      markdownContent += ` **${project2.name}** <br> ${project2.stack.join(
-        ', '
-      )} <br> ![Preview](${project2.preview}) <br> ${
-        project2.desc
-      } <br> [Website](${project2.links.website}) <br> [Source](${
-        project2.links.source
-      }) |`;
+    for (const project of jsonData.projects) {
+        markdownContent += `| <br> **${project.name}** <br> <br> ${project.stack.join(', ')} <br> <img src="${project.preview}" width="400" alt="Preview"> <br> <br> ${project.desc} <br> <br>[Демонстрация](${project.links.website}) <br> [Исходный код](${project.links.source}) <br> |\n`;
     }
 
-    markdownContent += '\n';
-  }
-
-  return markdownContent;
+    return markdownContent;
 }
 
 // Загрузка данных из JSON файла
